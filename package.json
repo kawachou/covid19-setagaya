@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "build": "node main.js docs/data.html > docs/data.txt",
+    "build": "node main.js docs/data.html > docs/data.csv",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
