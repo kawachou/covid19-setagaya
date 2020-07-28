@@ -20,14 +20,16 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
+    - name: Run a one-line script
+      run:  curl https://www.city.setagaya.lg.jp/mokuji/kusei/001/001/004/d00185364.html > data.html
+
     # Runs a set of commands using the runners shell
     - name: Run a multi-line script
       run: |
-        curl https://www.city.setagaya.lg.jp/mokuji/kusei/001/001/004/d00185364.html > data.html
-
         git config --local user.email "frogcat@users.noreply.github.com"
         git config --local user.name "frogcat-bot"
-        git commit -m "Add changes" -a
+        git add data.html
+        git commit -m "Update data.html"
 
     - name: GitHub Push
       uses: ad-m/github-push-action@v0.6.0
