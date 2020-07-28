@@ -1,0 +1,26 @@
+{
+  "name": "covid19-setagaya",
+  "version": "1.0.0",
+  "description": "html2json for covid19-setagaya",
+  "main": "main.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "node main.js docs/data.html > docs/data.txt",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frogcat/covid19-setagaya.git"
+  },
+  "author": "frogcat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/frogcat/covid19-setagaya/issues"
+  },
+  "homepage": "https://github.com/frogcat/covid19-setagaya#readme",
+  "dependencies": {
+    "jsdom": "^16.3.0"
+  }
+}
