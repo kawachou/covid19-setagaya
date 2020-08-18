@@ -1,0 +1,21 @@
+name: cron
+
+on:
+  schedule:
+    - cron: '50 * * * *'
+  workflow_dispatch:
+    branches: [ master ]
+
+jobs:
+  curl:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - run: curl https://www.city.setagaya.lg.jp/mokuji/kusei/001/001/004/d00185364.html > docs/data.html
+    - run: git config --local user.email "kawachou@gmail.com"
+    - run: git config --local user.name "kawachou"
+    - run: git add docs
+    - run: git commit -m "Update data.html"
+    - uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}

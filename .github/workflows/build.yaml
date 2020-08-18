@@ -1,8 +1,8 @@
-name: main
+name: build
 
 on:
-  schedule:
-    - cron: '50 * * * *'
+  push:
+    branches: [ master ]
   workflow_dispatch:
     branches: [ master ]
 
@@ -15,12 +15,11 @@ jobs:
       with:
         node-version: 14.x
     - run: npm ci
-    - run: curl https://www.city.setagaya.lg.jp/mokuji/kusei/001/001/004/d00185364.html > docs/data.html
     - run: npm run build
     - run: git config --local user.email "kawachou@gmail.com"
     - run: git config --local user.name "kawachou"
     - run: git add docs
-    - run: git commit -m "Update data.html and data.csv"
+    - run: git commit -m "Update data.csv"
 
     - uses: ad-m/github-push-action@v0.6.0
       if: ${{ success() }}
