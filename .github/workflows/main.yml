@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '50 * * * *'
   workflow_dispatch:
-    branches: [ master ]
+    branches: [ cron_and_build ]
 
 jobs:
   build:
