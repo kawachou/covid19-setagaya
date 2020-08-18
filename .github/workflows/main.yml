@@ -17,8 +17,8 @@ jobs:
     - run: npm ci
     - run: curl https://www.city.setagaya.lg.jp/mokuji/kusei/001/001/004/d00185364.html > docs/data.html
     - run: npm run build
-    - run: git config --local user.email "frogcat@users.noreply.github.com"
-    - run: git config --local user.name "frogcat-bot"
+    - run: git config --local user.email "kawachou@gmail.com"
+    - run: git config --local user.name "kawachou"
     - run: git add docs
     - run: git commit -m "Update data.html and data.csv"
 
