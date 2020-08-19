@@ -1,0 +1,32 @@
+name: fetch-and-html2csv
+
+on:
+  schedule:
+    - cron: '50 * * * *'
+  workflow_dispatch:
+    branches: [ master ]
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: fetch
+      run: curl https://www.city.setagaya.lg.jp/mokuji/kusei/001/001/004/d00185364.html > docs/data.html
+
+    - name: docker login
+      run: echo ${{ secrets.DOCKER_HUB_PASS }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
+
+    - name: html2csv
+      run: docker run kawachou55/html2csv:v0.0.2 -v $(pwd)/docs:/app/docs main.js docs/data.html > docs/data.csv
+
+    - run: git config --local user.email "kawachou@gmail.com"
+    - run: git config --local user.name "kawachou"
+    - run: git add docs
+    - run: git commit -m "Update data.html and data.csv"
+    - uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+
+

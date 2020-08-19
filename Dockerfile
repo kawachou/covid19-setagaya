@@ -7,4 +7,5 @@ RUN npm ci
 
 COPY main.js ./
 
-CMD [ "node", "main.js" ]
+ENTRYPOINT [ "node" ]
+CMD [ "main.js" , "docs/data.html" ]
