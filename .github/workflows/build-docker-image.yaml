@@ -1,6 +1,10 @@
 name: build-docker-image
 
 on:
+  push:
+    paths:
+    - 'package*.json'
+    - '*.js'
   workflow_dispatch:
     branches: [ master ]
 jobs:
@@ -10,10 +14,8 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Build and push Docker imaage
-      run: docker build . --file Dockerfile --tag kawachou55/scraper:v0.0.2
+      run: docker build . --file Dockerfile --tag kawachou55/html2csv:v0.0.2
 
     - run: echo ${{ secrets.DOCKER_HUB_PASS }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
-    - run: docker push kawachou55/scraper:v0.0.2
+    - run: docker push kawachou55/html2csv:v0.0.2
 
-    - name: fetch data
-      run: curl https://www.city.setagaya.lg.jp/mokuji/kusei/001/001/004/d00185364.html > docs/data.html
