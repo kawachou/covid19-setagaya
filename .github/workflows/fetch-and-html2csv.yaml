@@ -19,7 +19,7 @@ jobs:
       run: echo ${{ secrets.DOCKER_HUB_PASS }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
 
     - name: html2csv
-      run: docker run kawachou55/html2csv:v0.0.2 -v $(pwd)/docs:/app/docs main.js docs/data.html > docs/data.csv
+      run: docker run -v $(pwd)/docs:/app/docs kawachou55/html2csv:v0.0.2 main.js docs/data.html > docs/data.csv
 
     - run: git config --local user.email "kawachou@gmail.com"
     - run: git config --local user.name "kawachou"
