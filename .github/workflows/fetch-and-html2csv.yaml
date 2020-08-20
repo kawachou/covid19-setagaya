@@ -21,7 +21,7 @@ jobs:
     - name: html2csv
       run: docker run -v $(pwd)/docs:/app/docs kawachou55/html2csv:v0.0.2 main.js docs/data.html > docs/data.csv
 
-    - run: git config --local user.email "kawachou@gmail.com"
+    - run: git config --local user.email "16146163+kawachou@users.noreply.github.com"
     - run: git config --local user.name "kawachou"
     - run: git add docs
     - run: git commit -m "Update data.html and data.csv"

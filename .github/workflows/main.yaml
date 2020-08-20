@@ -34,7 +34,7 @@ jobs:
     - run: npm ci
     - run: npm run build
 
-    - run: git config --local user.email "kawachou@gmail.com"
+    - run: git config --local user.email "16146163+kawachou@users.noreply.github.com"
     - run: git config --local user.name "kawachou"
     - run: git add docs
     - run: git commit -m "Update data.html"
