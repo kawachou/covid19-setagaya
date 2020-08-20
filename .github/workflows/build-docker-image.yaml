@@ -13,9 +13,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Build and push Docker imaage
-      run: docker build . --file Dockerfile --tag kawachou55/html2csv:v0.0.2
-
-    - run: echo ${{ secrets.DOCKER_HUB_PASS }} | docker login -u ${{ secrets.DOCKER_HUB_USER }} --password-stdin
-    - run: docker push kawachou55/html2csv:v0.0.2
-
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ secrets.DOCKER_HUB_USER }}
+        password: ${{ secrets.DOCKER_HUB_PASS }}
+        registry: kawachou55/html2csv
+        tag: v0.0.3
