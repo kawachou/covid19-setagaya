@@ -18,5 +18,6 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_HUB_USER }}
         password: ${{ secrets.DOCKER_HUB_PASS }}
+        registry: docker.io
         repository: kawachou55/html2csv
-        tag: v0.0.2
+        tag: v0.0.3
