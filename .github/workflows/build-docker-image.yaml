@@ -20,4 +20,4 @@ jobs:
         password: ${{ secrets.DOCKER_HUB_PASS }}
         registry: docker.io
         repository: kawachou55/html2csv
-        tag: v0.0.3
+        tags: v0.0.3
